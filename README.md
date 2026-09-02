@@ -23,7 +23,31 @@ The application uses machine learning to analyze URL characteristics such as:
 * IP address presence
 * Number of subdomains
 * Suspicious keywords
+---
 
+## 📸 Project Screenshots
+
+### 🏠 Home Screen
+
+![Home Screen](screenshots/home-screen.png)
+
+### 📊 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### ⚠️ Phishing URL Detection
+
+![Phishing Result](screenshots/phishing-result.png)
+
+### ✅ Legitimate URL Detection
+
+![Legitimate Result](screenshots/legitimate-result.png)
+
+### 🗑️ Clear History
+
+![Clear History](screenshots/clear-history.png)
+
+---
 ---
 
 ## ✨ Features
