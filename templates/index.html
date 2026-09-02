@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phishing URL Detector</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Main Heading -->
+
+        <h1>🔐 Phishing URL Detector</h1>
+
+        <p class="description">
+            Enter a website URL to check whether it is legitimate
+            or potentially phishing.
+        </p>
+
+
+        <!-- Dashboard Statistics -->
+
+        <div class="dashboard">
+
+            <div class="stat-card">
+
+                <span class="stat-icon">📊</span>
+
+                <h3>Total Analyzed</h3>
+
+                <strong>
+                    {{ total }}
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card phishing-stat">
+
+                <span class="stat-icon">⚠️</span>
+
+                <h3>Phishing URLs</h3>
+
+                <strong>
+                    {{ phishing }}
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card legitimate-stat">
+
+                <span class="stat-icon">✅</span>
+
+                <h3>Legitimate URLs</h3>
+
+                <strong>
+                    {{ legitimate }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- URL Analysis Form -->
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="url"
+                placeholder="https://example.com"
+                value="{{ url }}"
+                required
+            >
+
+            <button type="submit">
+                Analyze URL
+            </button>
+
+        </form>
+
+
+        <!-- Validation Error -->
+
+        {% if error %}
+
+        <div class="error-message">
+
+            ⚠️ {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        {% if result %}
+
+        <!-- Prediction Result -->
+
+        <div class="result {{ result_class }}">
+
+            {% if result == "Phishing URL" %}
+
+                <h2>⚠️ Phishing URL</h2>
+
+                <p>
+                    This URL appears to be potentially malicious or suspicious.
+                </p>
+
+            {% else %}
+
+                <h2>✅ Legitimate URL</h2>
+
+                <p>
+                    This URL appears to be legitimate.
+                </p>
+
+            {% endif %}
+
+
+            <!-- Confidence -->
+
+            <div class="confidence">
+
+                <strong>
+                    Confidence: {{ confidence }}%
+                </strong>
+
+            </div>
+
+
+            <!-- Confidence Bar -->
+
+            <div class="confidence-bar-container">
+
+                <div
+                    class="confidence-bar {{ result_class }}"
+                    style="width: {{ confidence }}%;"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- URL Security Features -->
+
+        <div class="features">
+
+            <h2>🔎 URL Security Features</h2>
+
+            <div class="feature-grid">
+
+
+                <!-- URL Length -->
+
+                <div class="feature">
+
+                    <span>
+                        URL Length
+                    </span>
+
+                    <strong>
+                        {{ features["url_length"] }}
+                    </strong>
+
+                </div>
+
+
+                <!-- Number of Dots -->
+
+                <div class="feature">
+
+                    <span>
+                        Number of Dots
+                    </span>
+
+                    <strong>
+                        {{ features["dot_count"] }}
+                    </strong>
+
+                </div>
+
+
+                <!-- Number of Hyphens -->
+
+                <div class="feature">
+
+                    <span>
+                        Number of Hyphens
+                    </span>
+
+                    <strong>
+                        {{ features["hyphen_count"] }}
+                    </strong>
+
+                </div>
+
+
+                <!-- Special Characters -->
+
+                <div class="feature">
+
+                    <span>
+                        Special Characters
+                    </span>
+
+                    <strong>
+                        {{ features["special_char_count"] }}
+                    </strong>
+
+                </div>
+
+
+                <!-- @ Symbol -->
+
+                <div class="feature">
+
+                    <span>
+                        @ Symbol
+                    </span>
+
+                    <strong>
+
+                        {% if features["has_at_symbol"] %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+
+                <!-- HTTPS -->
+
+                <div class="feature">
+
+                    <span>
+                        HTTPS
+                    </span>
+
+                    <strong>
+
+                        {% if features["uses_https"] %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+
+                <!-- IP Address -->
+
+                <div class="feature">
+
+                    <span>
+                        IP Address
+                    </span>
+
+                    <strong>
+
+                        {% if features["has_ip"] %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+
+                <!-- Subdomains -->
+
+                <div class="feature">
+
+                    <span>
+                        Subdomains
+                    </span>
+
+                    <strong>
+                        {{ features["subdomain_count"] }}
+                    </strong>
+
+                </div>
+
+
+                <!-- Suspicious Keywords -->
+
+                <div class="feature">
+
+                    <span>
+                        Suspicious Keywords
+                    </span>
+
+                    <strong>
+                        {{ features["suspicious_word_count"] }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Prediction History -->
+
+        {% if history %}
+
+        <div class="history">
+
+            <h2>📋 Prediction History</h2>
+
+
+            <!-- Clear History Button -->
+
+            <form
+                method="POST"
+                action="/clear-history"
+                class="clear-history-form"
+                onsubmit="return confirm('Are you sure you want to clear all prediction history?');"
+            >
+
+                <button
+                    type="submit"
+                    class="clear-history-button"
+                >
+                    🗑️ Clear History
+                </button>
+
+            </form>
+
+
+            <!-- History Table -->
+
+            <div class="history-table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>URL</th>
+
+                            <th>Result</th>
+
+                            <th>Confidence</th>
+
+                            <th>Time</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for item in history %}
+
+                        <tr>
+
+                            <td class="url-cell">
+                                {{ item["url"] }}
+                            </td>
+
+
+                            <td>
+
+                                {% if item["result"] == "Phishing URL" %}
+
+                                    <span class="history-phishing">
+                                        ⚠️ Phishing
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="history-legitimate">
+                                        ✅ Legitimate
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+                                {{ item["confidence"] }}%
+                            </td>
+
+
+                            <td>
+                                {{ item["created_at"] }}
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

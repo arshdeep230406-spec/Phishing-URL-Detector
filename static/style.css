@@ -1,0 +1,506 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* -----------------------------
+   Page
+----------------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #dfe6ee);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+
+/* -----------------------------
+   Main Container
+----------------------------- */
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+/* -----------------------------
+   Heading
+----------------------------- */
+
+h1 {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 32px;
+    color: #1f2937;
+}
+
+.description {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+
+/* -----------------------------
+   URL Form
+----------------------------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #374151;
+    box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.1);
+}
+
+button {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: #1f2937;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #111827;
+    transform: translateY(-1px);
+}
+
+
+/* -----------------------------
+   Prediction Result
+----------------------------- */
+
+.result {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid;
+    text-align: center;
+}
+
+.result h2 {
+    margin-bottom: 10px;
+}
+
+.result p {
+    line-height: 1.5;
+}
+
+
+/* Legitimate */
+
+.result.legitimate {
+    background: #ecfdf5;
+    border-color: #22c55e;
+}
+
+.result.legitimate h2 {
+    color: #15803d;
+}
+
+
+/* Phishing */
+
+.result.phishing {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.result.phishing h2 {
+    color: #dc2626;
+}
+
+
+/* Confidence */
+
+.confidence {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+
+/* -----------------------------
+   Security Features
+----------------------------- */
+
+.features {
+    margin-top: 35px;
+    width: 100%;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.feature {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.feature span {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.feature strong {
+    font-size: 17px;
+    color: #111827;
+}
+
+
+/* -----------------------------
+   Prediction History
+----------------------------- */
+
+.history {
+    margin-top: 35px;
+    width: 100%;
+}
+
+.history h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+
+/* Table wrapper */
+
+.history-table {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+
+/* Table */
+
+.history table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+/* Table Header and Cells */
+
+.history th,
+.history td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+
+/* Header */
+
+.history th {
+    background: #f8fafc;
+    color: #374151;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* Cells */
+
+.history td {
+    color: #4b5563;
+    font-size: 14px;
+}
+
+
+/* Column widths */
+
+.history th:nth-child(1),
+.history td:nth-child(1) {
+    width: 45%;
+}
+
+.history th:nth-child(2),
+.history td:nth-child(2) {
+    width: 20%;
+}
+
+.history th:nth-child(3),
+.history td:nth-child(3) {
+    width: 15%;
+}
+
+.history th:nth-child(4),
+.history td:nth-child(4) {
+    width: 20%;
+}
+
+
+/* URL */
+
+.url-cell {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+
+/* Phishing */
+
+.history-phishing {
+    color: #dc2626;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* Legitimate */
+
+.history-legitimate {
+    color: #15803d;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* Time */
+
+.history td:last-child {
+    white-space: nowrap;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+
+/* Remove border from last row */
+
+.history tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* -----------------------------
+   Mobile Responsive Design
+----------------------------- */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 25px;
+        margin-top: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .history-table {
+        overflow-x: auto;
+    }
+
+    .history table {
+        min-width: 650px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    input,
+    button {
+        font-size: 15px;
+    }
+}
+/* -----------------------------
+   Clear History Button
+----------------------------- */
+
+.clear-history-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.clear-history-button {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #dc2626;
+    border-radius: 8px;
+    background: white;
+    color: #dc2626;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.clear-history-button:hover {
+    background: #dc2626;
+    color: white;
+    transform: translateY(-1px);
+}
+/* -----------------------------
+   Dashboard Statistics
+----------------------------- */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.stat-icon {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.stat-card strong {
+    font-size: 28px;
+    color: #1f2937;
+}
+
+/* Phishing Statistics */
+
+.phishing-stat {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.phishing-stat strong {
+    color: #dc2626;
+}
+
+/* Legitimate Statistics */
+
+.legitimate-stat {
+    background: #ecfdf5;
+    border-color: #bbf7d0;
+}
+
+.legitimate-stat strong {
+    color: #15803d;
+}
+
+
+/* Dashboard Mobile Design */
+
+@media (max-width: 700px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* -----------------------------
+   Confidence Bar
+----------------------------- */
+
+.confidence-bar-container {
+    width: 100%;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.confidence-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.confidence-bar.phishing {
+    background: #ef4444;
+}
+
+.confidence-bar.legitimate {
+    background: #22c55e;
+}
