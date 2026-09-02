@@ -25,27 +25,32 @@ The application uses machine learning to analyze URL characteristics such as:
 * Suspicious keywords
 ---
 
+---
+
 ## 📸 Project Screenshots
 
 ### 🏠 Home Screen
 
 ![Home Screen](screenshots/home-screen.png)
 
+### 🔍 URL Features
+
+![URL Features](screenshots/features.png)
+
+### ⚠️ Phishing URL Detection
+
+![Phishing URL Detection](screenshots/phishing-result.png)
+
 ### 📊 Dashboard
 
 ![Dashboard](screenshots/dashboard.png)
 
-### ⚠️ Phishing URL Detection
-
-![Phishing Result](screenshots/phishing-result.png)
-
-### ✅ Legitimate URL Detection
-
-![Legitimate Result](screenshots/legitimate-result.png)
-
 ### 🗑️ Clear History
 
 ![Clear History](screenshots/clear-history.png)
+
+
+---
 
 ---
 ---
