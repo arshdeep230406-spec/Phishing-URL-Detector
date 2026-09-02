@@ -32,7 +32,7 @@ The application uses machine learning to analyze URL characteristics such as:
 ### 🗑️ Clear History
 
 ![Clear History](screenshots/clear-history.png)
-![Home Screen](screenshots/home-screen.png)
+
 ### 🔍 URL Features
 
 ![URL Features](screenshots/features.png)
@@ -48,6 +48,7 @@ The application uses machine learning to analyze URL characteristics such as:
 ### 🏠 Home Screen
 
 ![Home Screen](screenshots/home-screen.png)
+
 
 
 ---
